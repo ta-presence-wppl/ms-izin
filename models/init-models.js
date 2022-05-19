@@ -8,7 +8,7 @@ var _presensi = require("./presensi");
 function initModels(sequelize) {
   var izin = _izin(sequelize, DataTypes);
   var jabatan = _jabatan(sequelize, DataTypes);
-  var jenis_izin = _jenis_izin(sequelize, DataTypes);
+  //var jenis_izin = _jenis_izin(sequelize, DataTypes);
   var pegawai = _pegawai(sequelize, DataTypes);
   var presensi = _presensi(sequelize, DataTypes);
 
@@ -28,13 +28,12 @@ function initModels(sequelize) {
   izin.belongsTo(pegawai, { foreignKey: "id_peg" });
   pegawai.hasMany(izin, { foreignKey: "id_peg" });
 
-  izin.belongsTo(jenis_izin, { as: "jenis_jenis_izin", foreignKey: "jenis"});
-  jenis_izin.hasMany(izin, { as: "izins", foreignKey: "jenis"});
+  //izin.belongsTo(jenis_izin, { as: "jenis_jenis_izin", foreignKey: "jenis"});
+  //jenis_izin.hasMany(izin, { as: "izins", foreignKey: "jenis"});
 
   return {
     izin,
     jabatan,
-    jenis_izin,
     pegawai,
     presensi,
   };

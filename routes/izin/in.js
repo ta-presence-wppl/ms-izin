@@ -59,7 +59,7 @@ const imageUpload = multer({
  *          - email
  *          - password
  */
-router.get('/', (req, res, next) => {
+router.get('/', validator.validate("check_history"), validator.verify, (req, res, next) => {
     var myDate = {
         id_peg: req.user_data.id_peg,
         date: req.query.date
@@ -89,12 +89,12 @@ router.get('/', (req, res, next) => {
 router.post('/', imageUpload.single('image'), (req, res, next) => {
     var myDate = {
         id_peg: req.user_data.id_peg,
-        jenis: req.body.jenis_izin_id,
+        jenis: req.body.jenis_izin,
         ket: req.body.ket,
         tgl_awal: req.body.tgl_awal,
         tgl_akhir: req.body.tgl_akhir,
         foto: req.file.filename,
-        id_atasan: req.user_data.kode_jabatan
+        id_atasan: req.user_data.id_atasan
     }
     try {
         async.waterfall([

@@ -12,13 +12,16 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     jenis: {
-      type: DataTypes.BIGINT,
+      type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: 0,
-      references: {
-        model: 'jenis_izin',
-        key: 'jenis_izin_id'
-      }
+      defaultValue: 'IZIN'
+      // type: DataTypes.BIGINT,
+      // allowNull: false,
+      // defaultValue: 0,
+      // references: {
+      //   model: 'jenis_izin',
+      //   key: 'jenis_izin_id'
+      // }
     },
     ket: {
       type: DataTypes.TEXT,
